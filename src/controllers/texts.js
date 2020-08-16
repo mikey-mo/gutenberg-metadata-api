@@ -1,8 +1,8 @@
 const texts = require('../services/texts');
 
-const get = data => {
-    if (data.id)
-        return texts.get(data.id);
+const get = id => {
+    if (id)
+        return texts.get(id);
     return texts.get();
 };
 

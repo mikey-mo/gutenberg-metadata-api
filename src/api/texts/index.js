@@ -6,8 +6,8 @@ const textsRoutes = async (fastify, options) => {
         res.status(200).send(allTexts);
     });
 
-    fastify.get('/texts/:id', (fastify, options) => {
-        const textById = texts.get();
+    fastify.get('/texts/:id', (req, res) => {
+        const textById = texts.get(req.params.id);
         res.status(200).send(textById);
     })
 };
