@@ -1,10 +1,6 @@
 const texts = require('../services/texts');
 
-const get = id => {
-    if (id)
-        return texts.get(id);
-    return texts.get();
-};
+const get = (data) => texts.get(data);
 
 module.exports = {
     get,
