@@ -1,9 +1,16 @@
 const textMetadata = require('../data/gutenberg-metadata.json');
 
-const mapFullMetadata = ({ data, queries }) => {
-    const keys = Object.keys(data);
+const filterMetaData = ({ queries, data = textMetadata }) => {
+    return data;
+};
+
+const mapFullMetadata = ({ queries }) => {
+    const filteredMetaData = filterMetaData({ queries });
+    if (!filteredMetaData)
+        return [];
+    const keys = Object.keys(filteredMetaData);
     return keys.map((id) => {
-        const text = data[id];
+        const text = filteredMetaData[id];
         return ({
             id: text.id,
             author: text.author,
@@ -18,7 +25,7 @@ const get = ({ id, queries }) => {
             id: id,
             ...textMetadata[id],
         };
-    return mapFullMetadata({ data: textMetadata, queries });
+    return mapFullMetadata({ queries });
 };
 
 module.exports = {
