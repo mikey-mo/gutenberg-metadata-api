@@ -35,9 +35,9 @@ const filterMetaData = ({
 };
 
 const mapFullMetadata = ({ queries }) => {
-    if (!queries)
-        return textMetadata.map((id) => {
-            const text = filteredMetaData[id];
+    if (!Object.keys(queries).length)
+        return Object.keys(textMetadata).map((id) => {
+            const text = textMetadata[id];
             return ({
                 id: text.id,
                 author: text.author,
