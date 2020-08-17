@@ -13,7 +13,7 @@ const filterMetaData = ({
         id: id,
         ...data[id],
     }));
-    // TODO: figure a way to filtere this in one go
+    // TODO: filter this in one go
     if (author)
         filtered = filtered.filter((text) => (text.author.indexOf(author) > -1));
     if (title)
