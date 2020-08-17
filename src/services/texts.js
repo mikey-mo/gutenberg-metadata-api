@@ -1,22 +1,50 @@
 const textMetadata = require('../data/gutenberg-metadata.json');
 
-const filterMetaData = ({ queries, data = textMetadata }) => {
-    return data;
+const filterMetaData = ({
+    data = textMetadata,
+    queries: {
+        author,
+        title,
+        subject,
+        language,
+    },
+}) => {
+    let filtered = Object.keys(data).map((id) => ({
+        id: id,
+        ...data[id],
+    }));
+    // TODO: figure a way to filtere this in one go
+    if (author)
+        filtered = filtered.filter((text) => (text.author.indexOf(author) > -1));
+    if (title)
+        filtered = filtered.filter((text) => (text.title.indexOf(title) > -1));
+    if (subject)
+        filtered = filtered.filter((text) => (text.subject.indexOf(subject) > -1));
+    if (language)
+        filtered = filtered.filter((text) => (text.language.indexOf(language) > -1));
+    return {
+        amount: filtered.length,
+        queries: {
+            author: author ? author : null,
+            title: title ? title : null,
+            subject: subject ? subject : null,
+            language: language ? language : null,
+        },
+        data: filtered,
+    };
 };
 
 const mapFullMetadata = ({ queries }) => {
-    const filteredMetaData = filterMetaData({ queries });
-    if (!filteredMetaData)
-        return [];
-    const keys = Object.keys(filteredMetaData);
-    return keys.map((id) => {
-        const text = filteredMetaData[id];
-        return ({
-            id: text.id,
-            author: text.author,
-            title: text.title,
+    if (!queries)
+        return textMetadata.map((id) => {
+            const text = filteredMetaData[id];
+            return ({
+                id: text.id,
+                author: text.author,
+                title: text.title,
+            });
         });
-    });
+    return filterMetaData({ queries });
 };
 
 const get = ({ id, queries }) => {
