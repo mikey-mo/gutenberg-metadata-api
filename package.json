@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "PORT=8080 NODE_ENV=development nodemon index",
+    "predev": "./src/scripts/unziph.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
