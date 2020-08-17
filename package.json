@@ -15,9 +15,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
     "fastify": "^3.2.0"
   },
   "devDependencies": {
+    "joi": "^17.2.0",
+    "joi-to-json-schema": "^5.1.0",
     "nodemon": "^2.0.4"
   }
 }

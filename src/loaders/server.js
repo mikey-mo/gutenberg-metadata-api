@@ -1,4 +1,4 @@
-const fastify = require('fastify')({ logger: false });
+const fastify = require('fastify')({ logger: true });
 
 const routes = require('../api');
 
