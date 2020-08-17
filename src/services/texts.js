@@ -1,4 +1,4 @@
-const textMetadata = require('../data/gutenberg-metadata.json');
+const textMetadata = require('../../data/gutenberg-metadata.json');
 
 const filterMetaData = ({
     data = textMetadata,
