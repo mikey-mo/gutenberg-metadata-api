@@ -1,0 +1,143 @@
+{
+	"info": {
+		"_postman_id": "0d1a4996-eac4-441a-b528-ab5083996fe4",
+		"name": "gutenberg-metadata-api",
+		"description": "REST api for getting gutenberg-metadata",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "health",
+			"item": [
+				{
+					"name": "healthcheck",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ACCESS_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server_url}}",
+							"host": [
+								"{{server_url}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "texts",
+			"item": [
+				{
+					"name": "all texts",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ACCESS_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server_url}}/texts",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"texts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all texts (queries)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ACCESS_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server_url}}/texts?author=James, Henry&title=Roderick Hudson&language=en",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"texts"
+							],
+							"query": [
+								{
+									"key": "author",
+									"value": "James, Henry"
+								},
+								{
+									"key": "title",
+									"value": "Roderick Hudson"
+								},
+								{
+									"key": "language",
+									"value": "en"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "text by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ACCESS_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server_url}}/texts/2701",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"texts",
+								"2701"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
