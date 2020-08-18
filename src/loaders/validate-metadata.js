@@ -15,8 +15,8 @@ const textMetadata = require('../../data/gutenberg-metadata.json');
     }));
 
     if (invalid.length) {
-        console.log('\Invalid Metadata');
-        invalid.forEach(id => console.log(id));
+        console.log('\Invalid Metadata: IDs...');
+        invalid.forEach(id => console.log(` - ${id}`));
     } else {
         console.log('\nAll Pass');
     }
