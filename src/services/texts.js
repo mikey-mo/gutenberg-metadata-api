@@ -25,12 +25,12 @@ const filterQueries = (
     if (subject)
         filtered = filtered.filter((text) => {
             const lowerCaseSubject = text.subject.map((subject) => subject.toLowerCase());
-            return lowerCaseSubject.indexOf(subject) > -1;
+            return lowerCaseSubject.indexOf(subject.toLowerCase()) > -1;
         });
     if (language)
         filtered = filtered.filter((text) => {
             const lowerCaseLanguage = text.language.map((language) => language.toLowerCase());
-            return lowerCaseLanguage.indexOf(language) > -1;
+            return lowerCaseLanguage.indexOf(language.toLowerCase()) > -1;
         });
     return filtered;
 };
