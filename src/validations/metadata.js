@@ -1,5 +1,3 @@
-const Joi = require('@hapi/joi');
-
 const schemas = require('../schemas');
 
 const validateMetadata = async (metadata) => {

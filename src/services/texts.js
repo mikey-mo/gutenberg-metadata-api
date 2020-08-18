@@ -1,4 +1,39 @@
+const _ = require('lodash');
+
 const textMetadata = require('../../data/gutenberg-metadata.json');
+
+const filterQueries = (
+    {
+        author,
+        title,
+        subject,
+        language,
+    },
+    filteredArg,
+) => {
+    let filtered = _.cloneDeep(filteredArg);
+    if (author)
+        filtered = filtered.filter((text) => {
+            const lowerCaseAuthor = text.author.map((author) => author.toLowerCase());
+            return lowerCaseAuthor.indexOf(author.toLowerCase()) > -1;
+        });
+    if (title)
+        filtered = filtered.filter((text) => {
+            const lowerCaseTitle = text.title.map((title) => title.toLowerCase());
+            return lowerCaseTitle.indexOf(title.toLowerCase()) > -1;
+        });
+    if (subject)
+        filtered = filtered.filter((text) => {
+            const lowerCaseSubject = text.subject.map((subject) => subject.toLowerCase());
+            return lowerCaseSubject.indexOf(subject) > -1;
+        });
+    if (language)
+        filtered = filtered.filter((text) => {
+            const lowerCaseLanguage = text.language.map((language) => language.toLowerCase());
+            return lowerCaseLanguage.indexOf(language) > -1;
+        });
+    return filtered;
+};
 
 const filterMetaData = ({
     data = textMetadata,
@@ -13,15 +48,15 @@ const filterMetaData = ({
         id: id,
         ...data[id],
     }));
-    // TODO: filter this in one go
-    if (author)
-        filtered = filtered.filter((text) => (text.author.indexOf(author) > -1));
-    if (title)
-        filtered = filtered.filter((text) => (text.title.indexOf(title) > -1));
-    if (subject)
-        filtered = filtered.filter((text) => (text.subject.indexOf(subject) > -1));
-    if (language)
-        filtered = filtered.filter((text) => (text.language.indexOf(language) > -1));
+    filtered = filterQueries(
+        {
+            author,
+            title,
+            subject,
+            language,
+        },
+        filtered,
+    );
     return {
         amount: filtered.length,
         queries: {
