@@ -1,1 +1,1 @@
-node src/loaders/validation
+node src/loaders/validate-metadata

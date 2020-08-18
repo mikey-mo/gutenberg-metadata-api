@@ -1,12 +1,11 @@
 const validations = require('../validations');
 const textMetadata = require('../../data/gutenberg-metadata.json');
 
-const metadataList = Object.keys(textMetadata).map((id) => ({
-    id,
-    ...textMetadata[id],
-}));
-
 (async () => {
+    const metadataList = Object.keys(textMetadata).map((id) => ({
+        id,
+        ...textMetadata[id],
+    }));
     const invalid = [];
 
     await Promise.all(metadataList.map(async (text) => {
