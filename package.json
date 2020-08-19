@@ -19,7 +19,8 @@
     "joi": "^17.2.0",
     "joi-to-json-schema": "^5.1.0",
     "knex": "^0.21.5",
-    "lodash": "^4.17.20"
+    "lodash": "^4.17.20",
+    "pg": "^8.3.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
