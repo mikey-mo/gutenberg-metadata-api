@@ -12,7 +12,7 @@ const textsRoutes = async (fastify, options) => {
             queries: req.query,
         });
         res.status(200).send(textById);
-    })
+    });
 };
 
 module.exports = textsRoutes;

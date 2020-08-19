@@ -18,6 +18,7 @@
     "fastify": "^3.2.0",
     "joi": "^17.2.0",
     "joi-to-json-schema": "^5.1.0",
+    "knex": "^0.21.5",
     "lodash": "^4.17.20"
   },
   "devDependencies": {
