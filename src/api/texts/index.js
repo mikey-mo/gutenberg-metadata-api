@@ -1,7 +1,7 @@
 const texts = require('../../controllers/texts');
 
 const textsRoutes = async (fastify, options) => {
-    fastify.get('/texts', async (req, res) => {
+    fastify.get('/texts', (req, res) => {
         const allTexts = texts.get({ queries: req.query });
         res.status(200).send(allTexts);
     });
