@@ -1,0 +1,25 @@
+version: '3.7'
+
+services:
+  gutenberg-pg:
+    image: postgres:latest
+    restart: always
+    env_file: ./.env-pg
+    ports:
+      - 5433:5432 
+    networks:
+      - gutenberg-metadata-network
+    volumes:
+      - gutenberg-metadata:/var/lib/postgresql/data
+  gutenberg-metadata-service:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports: 
+      - 8080:8080
+    networks:
+      - gutenberg-metadata-network
+networks:
+  gutenberg-metadata-network:
+volumes:
+  gutenberg-metadata: 
