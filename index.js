@@ -1,3 +1,10 @@
-const { server } = require('./src/loaders');
+const { server, database } = require('./src/loaders');
 
-server.listen();
+(async () => {
+    try {
+        await server.listen();
+        await database.init();
+    } catch (error) {
+        console.log('error starting services:', error);
+    }
+})();

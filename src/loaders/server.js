@@ -9,7 +9,7 @@ fastify.register(routes.textsRoutes)
     .register(routes.healthRoutes);
 
 const listen = () => {
-    console.log('gutenberg metadata api is running on port', PORT, 'in the', RUN_ENVIRONMENT.toUpperCase(), 'environment');
+    console.log('\n', String.fromCodePoint(0x1F989), 'gutenberg metadata api is running on port', PORT, 'in the', RUN_ENVIRONMENT.toUpperCase(), 'environment ...');
     fastify.listen(PORT, '0.0.0.0');
 };
 
